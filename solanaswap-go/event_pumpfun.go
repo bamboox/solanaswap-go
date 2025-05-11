@@ -50,6 +50,10 @@ func (p *Parser) processPumpfunSwaps(instructionIndex int) []SwapData {
 			}
 		}
 	}
+	// FIX 有些从pumpfun migrate 到  PumpfunAMM
+	if swaps == nil {
+		swaps = p.processPumpfunAMMSwaps(instructionIndex)
+	}
 	return swaps
 }
 
